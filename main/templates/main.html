@@ -11,7 +11,7 @@
     <p>{{class}}</p>
 
     <table id="product_table">
-        <tr>
+        <!-- <tr>
             <th style="font-size: 23px;">Name</th>
             <th style="font-size: 23px;">Price</th>
             <th style="font-size: 23px;">Description</th>
@@ -40,7 +40,7 @@
                     </a>
                 </td>
             </tr>
-        {% endfor %}
+        {% endfor %} -->
     </table>
 
     <br />
@@ -108,13 +108,27 @@
             <th>Price</th>
             <th>Description</th>
             <th>Date Added</th>
+            <th>Action</th>
         </tr>`
-        products.forEach((item) => {
+        products.forEach((product) => {
             htmlString += `\n<tr>
-            <td>${item.fields.name}</td>
-            <td>${item.fields.price}</td>
-            <td>${item.fields.description}</td>
-            <td>${item.fields.date_added}</td>
+            <td>${product.fields.name}</td>
+            <td>${product.fields.price}</td>
+            <td>${product.fields.description}</td>
+            <td>${product.fields.date_added}</td>
+            <td>
+                <a href='/edit-product/${product.pk}'>
+                    <button>
+                        Edit
+                    </button>
+                </a>
+
+                <a href='/delete/${product.pk}'>
+                    <button>
+                        Delete
+                    </button>
+                </a>
+            </td>
         </tr>` 
         })
         
